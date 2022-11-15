@@ -1,0 +1,127 @@
+---
+title: "Categorical Variables with forcats: exercises"
+author: "Carolina Díaz & Priscila Pimentel"
+date: ' November 2022'
+output: 
+  html_document:
+    toc: TRUE
+    df_print: paged
+    number_sections: FALSE
+    highlight: tango
+    theme: lumen
+    toc_depth: 3
+    toc_float: true
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE, 
+                      warning = FALSE)
+#Packages
+library(dplyr)
+library(forcats)
+library(ggplot2)
+```
+
+
+Now that we have dived into the `forcats` package, let's practice it!😎
+
+### 1) Checking levels 
+
+1.1 Have a look at the survey `gss_cat`
+
+```{r}
+gss_cat 
+```
+
+1.2 What are the levels of the categorical variable income of the survey' respondents?  
+
+```{r}
+levels(gss_cat$rincome)
+```
+### 2) Manually ordering levels
+
+In general, income levels are in the order. But, let's supposed that we work with a reshuffled income.
+
+```{r}
+reshuffled_income <- gss_cat$rincome %>%
+  fct_shuffle()
+
+levels(reshuffled_income)
+```
+
+Use the function `fct_relevel()` to manually reorder the reshuffled_income levels in the same way it was originally ordered. Hint: remember that by default the first level we write is moved to the front.
+
+```{r}
+
+income_ordered_manually <- fct_relevel(reshuffled_income, c( "No answer", "Don't know", "Refused", "$25000 or more", "$20000 - 24999", "$15000 - 19999", "$10000 - 14999", "$8000 to 9999",  "$7000 to 7999",  "$6000 to 6999", "$5000 to 5999", "$4000 to 4999",  "$3000 to 3999", "$1000 to 2999",  "Lt $1000", "Not applicable"))
+
+levels(income_ordered_manually)
+```
+
+### 3) Reversing the order of the levels 
+
+Using the function `fct_rev()` reverse the order that you have given in the last exercise.
+
+```{r}
+
+fct_rev(income_ordered_manually)%>%
+  levels()
+
+```
+
+### 4) Ordering by frequency
+
+Have a look at of the next graph.  
+    
+```{r}
+ggplot(gss_cat, aes(x = rincome)) + 
+    geom_bar() + 
+    coord_flip() 
+```
+
+It is a bit disordered, right? Organize it by frequency. Hint: use the function `fct_infreq`.
+
+```{r}
+
+ggplotprueba <- ggplot(gss_cat, aes(x = fct_infreq(rincome))) + 
+    geom_bar() + 
+    coord_flip() 
+ggplotprueba
+    
+```
+
+### 5) Combining levels
+
+Display the same graph, but reduce the number of levels to 5. The remaining levels sum them up into an "other" category. Hint: use the function `fct_lump`.
+
+```{r}
+
+  ggplot(gss_cat, aes(x = fct_lump(fct_infreq(rincome), n=5))) + 
+    geom_bar() + 
+    coord_flip()
+```
+
+### 6) Modifying factor levels
+
+For reasons of simplicity, you prefer to display the income information summing up first and second level of the variable, third and forth, and so on. Group all no numerical answers in the last level. Use the function `fct_collapse()` to organize it. You don't need to do a graph.
+
+```{r}
+
+gss_cat %>%
+  mutate(rincome = fct_collapse(rincome,
+    other = c("No answer", "Don't know", "Refused", "Not applicable"),
+    "20000 or more" = c("$25000 or more", "$20000 - 24999"),
+    "10000 - 19999" = c("$15000 - 19999", "$10000 - 14999"),
+    "7000 - 9999" = c("$8000 to 9999", "$7000 to 7999"),
+    "5000 - 6999" = c("$6000 to 6999", "$5000 to 5999"),
+    "3000 - 4999" = c("$4000 to 4999",  "$3000 to 3999"),
+    "<2999" = c("$1000 to 2999",  "Lt $1000")
+  )) %>%
+  count(rincome)
+
+```
+
+You are an expert on forcats already! 😺

@@ -1,0 +1,106 @@
+---
+title: "Categorical Variables with forcats: exercises"
+author: "Carolina Díaz & Priscila Pimentel"
+date: ' November 2022'
+output: 
+  html_document:
+    toc: TRUE
+    df_print: paged
+    number_sections: FALSE
+    highlight: tango
+    theme: lumen
+    toc_depth: 3
+    toc_float: true
+    self_contained: false
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE, 
+                      warning = FALSE)
+#Packages
+library(dplyr)
+library(forcats)
+library(ggplot2)
+```
+
+
+Now that we have dived into the `forcats` package, let's practice it!😎
+
+### 1) Checking levels 
+
+1.1 Have a look at the survey `gss_cat`
+
+```{r}
+# WRITE YOUR CODE HERE
+```
+
+1.2 What are the levels of the categorical variable income of the survey' respondents?  
+
+```{r}
+# WRITE YOUR CODE HERE
+```
+### 2) Manually ordering levels
+
+In general, income levels are in the order. But, let's supposed that we work with a reshuffled income.
+
+```{r}
+reshuffled_income <- gss_cat$rincome %>%
+  fct_shuffle()
+
+levels(reshuffled_income)
+```
+
+Use the function `fct_relevel()` to manually reorder the reshuffled_income levels in the same way it was originally ordered. Hint: remember that by default the first level we write is moved to the front.
+
+```{r}
+# WRITE YOUR CODE HERE
+
+```
+
+### 3) Reversing the order of the levels 
+
+Using the function `fct_rev()` reverse the order that you have given in the last exercise.
+
+```{r}
+# WRITE YOUR CODE HERE
+
+```
+
+### 4) Ordering by frequency
+
+Have a look at of the next graph.  
+    
+```{r}
+ggplot(gss_cat, aes(x = rincome)) + 
+    geom_bar() + 
+    coord_flip() 
+```
+
+It is a bit disordered, right? Organize it by frequency. Hint: use the function `fct_infreq`.
+
+```{r}
+# WRITE YOUR CODE HERE
+    
+```
+
+### 5) Combining levels
+
+Display the same graph, but reduce the number of levels to 5. The remaining levels sum them up into an "other" category. Hint: use the function `fct_lump`.
+
+```{r}
+# WRITE YOUR CODE HERE
+
+```
+
+### 6) Modifying factor levels
+
+For reasons of simplicity, you prefer to display the income information summing up first and second level of the variable, third and forth, and so on. Group all no numerical answers in the last level. Use the function `fct_collapse()` to organize it. You don't need to do a graph.
+
+```{r}
+# WRITE YOUR CODE HERE
+
+```
+
+You are an expert on forcats already! 😺
