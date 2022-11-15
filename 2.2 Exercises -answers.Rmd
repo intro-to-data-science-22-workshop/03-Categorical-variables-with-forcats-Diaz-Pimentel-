@@ -43,7 +43,7 @@ levels(gss_cat$rincome)
 ```
 ### 2) Manually ordering levels
 
-In general, income levels are in the order. But, let's supposed that we work with a reshuffled income.
+In general, income levels are in the order. But, let's suppose that we work with a reshuffled income.
 
 ```{r}
 reshuffled_income <- gss_cat$rincome %>%
@@ -86,10 +86,10 @@ It is a bit disordered, right? Organize it by frequency. Hint: use the function 
 
 ```{r}
 
-ggplotprueba <- ggplot(gss_cat, aes(x = fct_infreq(rincome))) + 
+ggplot(gss_cat, aes(x = fct_infreq(rincome))) + 
     geom_bar() + 
     coord_flip() 
-ggplotprueba
+
     
 ```
 

@@ -43,7 +43,7 @@ Now that we have dived into the `forcats` package, let's practice it!😎
 ```
 ### 2) Manually ordering levels
 
-In general, income levels are in the order. But, let's supposed that we work with a reshuffled income.
+In general, income levels are in the order. But, let's suppose that we work with a reshuffled income.
 
 ```{r}
 reshuffled_income <- gss_cat$rincome %>%

@@ -345,15 +345,15 @@ div.tocify {
 </div>
 <div id="manually-ordering-levels" class="section level3">
 <h3>2) Manually ordering levels</h3>
-<p>In general, income levels are in the order. But, let’s supposed that we work with a reshuffled income.</p>
+<p>In general, income levels are in the order. But, let’s suppose that we work with a reshuffled income.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>reshuffled_income <span class="ot">&lt;-</span> gss_cat<span class="sc">$</span>rincome <span class="sc">%&gt;%</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_shuffle</span>()</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(reshuffled_income)</span></code></pre></div>
-<pre><code>##  [1] &quot;$7000 to 7999&quot;  &quot;$6000 to 6999&quot;  &quot;No answer&quot;      &quot;$3000 to 3999&quot; 
-##  [5] &quot;$4000 to 4999&quot;  &quot;$15000 - 19999&quot; &quot;Don&#39;t know&quot;     &quot;$10000 - 14999&quot;
-##  [9] &quot;Refused&quot;        &quot;$8000 to 9999&quot;  &quot;Not applicable&quot; &quot;$1000 to 2999&quot; 
-## [13] &quot;$20000 - 24999&quot; &quot;$25000 or more&quot; &quot;Lt $1000&quot;       &quot;$5000 to 5999&quot;</code></pre>
+<pre><code>##  [1] &quot;Refused&quot;        &quot;$25000 or more&quot; &quot;No answer&quot;      &quot;$5000 to 5999&quot; 
+##  [5] &quot;$4000 to 4999&quot;  &quot;Not applicable&quot; &quot;$8000 to 9999&quot;  &quot;$6000 to 6999&quot; 
+##  [9] &quot;$1000 to 2999&quot;  &quot;Don&#39;t know&quot;     &quot;$20000 - 24999&quot; &quot;$10000 - 14999&quot;
+## [13] &quot;Lt $1000&quot;       &quot;$7000 to 7999&quot;  &quot;$15000 - 19999&quot; &quot;$3000 to 3999&quot;</code></pre>
 <p>Use the function <code>fct_relevel()</code> to manually reorder the reshuffled_income levels in the same way it was originally ordered. Hint: remember that by default the first level we write is moved to the front.</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># WRITE YOUR CODE HERE</span></span></code></pre></div>
 </div>

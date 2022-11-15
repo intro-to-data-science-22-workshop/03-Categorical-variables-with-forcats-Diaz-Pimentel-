@@ -354,15 +354,15 @@ div.tocify {
 </div>
 <div id="manually-ordering-levels" class="section level3">
 <h3>2) Manually ordering levels</h3>
-<p>In general, income levels are in the order. But, let’s supposed that we work with a reshuffled income.</p>
+<p>In general, income levels are in the order. But, let’s suppose that we work with a reshuffled income.</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>reshuffled_income <span class="ot">&lt;-</span> gss_cat<span class="sc">$</span>rincome <span class="sc">%&gt;%</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fct_shuffle</span>()</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(reshuffled_income)</span></code></pre></div>
-<pre><code>##  [1] &quot;No answer&quot;      &quot;$25000 or more&quot; &quot;$8000 to 9999&quot;  &quot;$5000 to 5999&quot; 
-##  [5] &quot;$4000 to 4999&quot;  &quot;Don&#39;t know&quot;     &quot;Lt $1000&quot;       &quot;Refused&quot;       
-##  [9] &quot;$10000 - 14999&quot; &quot;$20000 - 24999&quot; &quot;Not applicable&quot; &quot;$1000 to 2999&quot; 
-## [13] &quot;$15000 - 19999&quot; &quot;$7000 to 7999&quot;  &quot;$6000 to 6999&quot;  &quot;$3000 to 3999&quot;</code></pre>
+<pre><code>##  [1] &quot;$3000 to 3999&quot;  &quot;Don&#39;t know&quot;     &quot;$1000 to 2999&quot;  &quot;Not applicable&quot;
+##  [5] &quot;Refused&quot;        &quot;No answer&quot;      &quot;$25000 or more&quot; &quot;$7000 to 7999&quot; 
+##  [9] &quot;Lt $1000&quot;       &quot;$15000 - 19999&quot; &quot;$8000 to 9999&quot;  &quot;$5000 to 5999&quot; 
+## [13] &quot;$4000 to 4999&quot;  &quot;$6000 to 6999&quot;  &quot;$20000 - 24999&quot; &quot;$10000 - 14999&quot;</code></pre>
 <p>Use the function <code>fct_relevel()</code> to manually reorder the reshuffled_income levels in the same way it was originally ordered. Hint: remember that by default the first level we write is moved to the front.</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>income_ordered_manually <span class="ot">&lt;-</span> <span class="fu">fct_relevel</span>(reshuffled_income, <span class="fu">c</span>( <span class="st">&quot;No answer&quot;</span>, <span class="st">&quot;Don&#39;t know&quot;</span>, <span class="st">&quot;Refused&quot;</span>, <span class="st">&quot;$25000 or more&quot;</span>, <span class="st">&quot;$20000 - 24999&quot;</span>, <span class="st">&quot;$15000 - 19999&quot;</span>, <span class="st">&quot;$10000 - 14999&quot;</span>, <span class="st">&quot;$8000 to 9999&quot;</span>,  <span class="st">&quot;$7000 to 7999&quot;</span>,  <span class="st">&quot;$6000 to 6999&quot;</span>, <span class="st">&quot;$5000 to 5999&quot;</span>, <span class="st">&quot;$4000 to 4999&quot;</span>,  <span class="st">&quot;$3000 to 3999&quot;</span>, <span class="st">&quot;$1000 to 2999&quot;</span>,  <span class="st">&quot;Lt $1000&quot;</span>, <span class="st">&quot;Not applicable&quot;</span>))</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -390,10 +390,9 @@ div.tocify {
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() </span></code></pre></div>
 <p><img src="2.2-Exercises--answers_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
 <p>It is a bit disordered, right? Organize it by frequency. Hint: use the function <code>fct_infreq</code>.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ggplotprueba <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(gss_cat, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(rincome))) <span class="sc">+</span> </span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(gss_cat, <span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">fct_infreq</span>(rincome))) <span class="sc">+</span> </span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_bar</span>() <span class="sc">+</span> </span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() </span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>ggplotprueba</span></code></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_flip</span>() </span></code></pre></div>
 <p><img src="2.2-Exercises--answers_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
 </div>
 <div id="combining-levels" class="section level3">
