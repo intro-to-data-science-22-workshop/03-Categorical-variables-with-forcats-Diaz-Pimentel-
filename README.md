@@ -13,7 +13,7 @@ The goals of this session are to (1) equip you with conceptual knowledge about t
 
 Carolina Díaz  ([website](https://github.com/CarolinaDiazS), [twitter](https://twitter.com/acadisu))
 
-Priscila Pimentel ([website](https://github.com/CarolinaDiazS), [twitter](https://twitter.com/acadisu))
+Priscila Pimentel ([website](https://github.com/priscilapv), [twitter](https://www.linkedin.com/in/priscila-vieira-01021993/))
 
 ## Further resources
 
